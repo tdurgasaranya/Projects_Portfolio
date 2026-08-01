@@ -1,648 +1,758 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Durga S Tummalapalli - Data Analytics Engineer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            font-family: 'Manrope', sans-serif;
-            font-optical-sizing: auto;
-            font-style: normal;
-        }
-        
-        .gradient-text {
-            background: linear-gradient(to right,#38bdf8, #0284c7, #0369a1);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(178, 101, 255, 0.2);
-        }
-        
-        .blob {
-            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-            animation: blob-animation 8s ease-in-out infinite;
-        }
-        
-        @keyframes blob-animation {
-            0%, 100% {
-                border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-            }
-            25% {
-                border-radius: 60% 40% 50% 70% / 60% 30% 70% 40%;
-            }
-            50% {
-                border-radius: 70% 30% 40% 60% / 50% 60% 30% 60%;
-            }
-            75% {
-                border-radius: 40% 60% 60% 40% / 70% 30% 50% 60%;
-            }
-        }
-        
-        .pulse-slow {
-            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .fade-in-up {
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-        
-        .skill-badge {
-            transition: all 0.2s ease;
-        }
-        
-        .skill-badge:hover {
-            background: linear-gradient(135deg, #e0f2fe, #e0f2fe);
-            color: white;
-            transform: scale(1.05);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Durga Tummalapalli · Data Engineer & AI Architect</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Styrene+A:wght@400;500&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<style>
+/* ── CLAUDE PALETTE ── */
+:root {
+  --cl-bg:       #FAF9F6;   /* Claude warm off-white */
+  --cl-surface:  #FFFFFF;
+  --cl-surface2: #F5F2ED;
+  --cl-border:   #E8E3DB;
+  --cl-border2:  #D4C9BB;
+  --cl-text:     #1A1108;   /* Claude near-black */
+  --cl-sub:      #4A3F30;
+  --cl-muted:    #9C8A73;
+  --cl-terra:    #CC785C;   /* Claude terracotta accent */
+  --cl-terra-bg: #FAF0EB;
+  --cl-terra-lt: #E8A88F;
+  --cl-warm:     #D4956A;
+  --cl-gold:     #B8860B;
+  --cl-gold-bg:  #FBF5E6;
+  --cl-dark:     #1A1108;
+  --cl-dark2:    #2C1F0E;
+  --mono: 'JetBrains Mono', monospace;
+  --sans: 'Inter', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--cl-bg); font-family: var(--sans); color: var(--cl-text); line-height: 1.5; }
+
+/* ── TOPBAR ── */
+.topbar {
+  background: var(--cl-dark);
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  height: 42px;
+  border-bottom: 1px solid var(--cl-dark2);
+}
+.win-dots { display: flex; gap: 6px; margin-right: 12px; }
+.win-dot { width: 11px; height: 11px; border-radius: 50%; }
+.tb-path { font-family: var(--mono); font-size: 10px; color: var(--cl-terra); letter-spacing: .05em; }
+.tb-nav { margin-left: auto; display: flex; gap: 0; }
+.tb-nav a {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: #8C7A65;
+  text-decoration: none;
+  padding: 0 14px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid #2C1F0E;
+  transition: color .15s, background .15s;
+  letter-spacing: .04em;
+}
+.tb-nav a:first-child { border-left: 1px solid #2C1F0E; }
+.tb-nav a:hover { color: var(--cl-terra); background: #2C1F0E; }
+
+/* ── HERO ── */
+.hero {
+  background: var(--cl-surface);
+  border-bottom: 1px solid var(--cl-border);
+  padding: 40px 48px 36px;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+.photo-wrap { position: relative; flex-shrink: 0; }
+.photo-ring {
+  width: 90px; height: 90px;
+  border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(135deg, var(--cl-terra), var(--cl-warm));
+}
+.photo-inner {
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--cl-terra-bg);
+  border: 2px solid var(--cl-surface);
+}
+.photo-inner img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.avail-badge {
+  position: absolute; bottom: 3px; right: 3px;
+  background: var(--cl-surface);
+  border: 1px solid var(--cl-border);
+  border-radius: 20px;
+  padding: 2px 7px;
+  font-family: var(--mono);
+  font-size: 8px;
+  color: #2E7D50;
+  display: flex; align-items: center; gap: 3px;
+}
+.avail-badge::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #22C55E; display: block; }
+.hero-body { flex: 1; }
+.hero-prompt { font-family: var(--mono); font-size: 10px; color: var(--cl-terra); letter-spacing: .06em; margin-bottom: 6px; }
+.hero-name {
+  font-family: var(--mono);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--cl-text);
+  letter-spacing: -.5px;
+  line-height: 1.1;
+}
+.cursor {
+  display: inline-block; width: 3px; height: 24px;
+  background: var(--cl-terra); vertical-align: middle; margin-left: 3px;
+  animation: blink 1.1s step-end infinite;
+}
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0;} }
+.hero-title { font-family: var(--mono); font-size: 11px; color: var(--cl-muted); margin-top: 5px; letter-spacing: .03em; }
+.hero-loc { font-family: var(--mono); font-size: 10px; color: var(--cl-border2); margin-top: 3px; }
+
+.chip-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 16px; }
+.chip {
+  font-family: var(--mono); font-size: 9px;
+  background: var(--cl-terra-bg); color: var(--cl-terra);
+  border: 1px solid #E8C4B0; padding: 3px 9px; border-radius: 3px;
+  letter-spacing: .02em; transition: border-color .15s;
+}
+.chip:hover { border-color: var(--cl-terra); }
+.chip.g { background: var(--cl-gold-bg); color: var(--cl-gold); border-color: #DEC88A; }
+
+.hero-links { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+.hlink {
+  font-family: var(--mono); font-size: 10px;
+  color: var(--cl-terra); text-decoration: none;
+  display: flex; align-items: center; gap: 5px;
+  padding: 5px 12px;
+  border: 1px solid #E8C4B0;
+  border-radius: 4px;
+  background: var(--cl-terra-bg);
+  transition: background .15s, border-color .15s;
+}
+.hlink:hover { background: #F5E8DF; border-color: var(--cl-terra); }
+.hlink i { font-size: 14px; }
+
+/* ── KPI BAR ── */
+.kpi-bar { background: var(--cl-dark); border-bottom: 1px solid #2C1F0E; }
+.kpi-inner {
+  max-width: 1000px; margin: 0 auto;
+  padding: 14px 48px;
+  display: grid; grid-template-columns: repeat(5, 1fr);
+}
+.kpi { text-align: center; padding: 4px 0; border-right: 1px solid #2C1F0E; }
+.kpi:last-child { border-right: none; }
+.kpi-n { font-family: var(--mono); font-size: 18px; font-weight: 600; color: var(--cl-terra); }
+.kpi-l { font-family: var(--mono); font-size: 8px; color: #6B5A45; margin-top: 3px; letter-spacing: .07em; text-transform: uppercase; }
+
+/* ── TAB SHELL ── */
+.shell { max-width: 1000px; margin: 0 auto; }
+
+.tab-bar {
+  background: var(--cl-surface);
+  border-bottom: 1px solid var(--cl-border);
+  display: flex;
+  padding: 0 48px;
+  position: sticky;
+  top: 42px;
+  z-index: 100;
+  gap: 0;
+  overflow-x: auto;
+}
+.tab-bar::-webkit-scrollbar { display: none; }
+.tab-btn {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .05em;
+  color: var(--cl-muted);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 12px 18px 10px;
+  cursor: pointer;
+  transition: color .15s, border-color .15s;
+  white-space: nowrap;
+  display: flex; align-items: center; gap: 6px;
+}
+.tab-btn i { font-size: 13px; }
+.tab-btn:hover { color: var(--cl-terra); }
+.tab-btn.active { color: var(--cl-terra); border-bottom-color: var(--cl-terra); }
+
+/* ── TAB PANELS ── */
+.tab-panel { display: none; padding: 32px 48px 48px; background: var(--cl-bg); }
+.tab-panel.active { display: block; }
+
+/* ── SECTION HEADER ── */
+.sec-hd {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 24px;
+}
+.sec-hd-label {
+  font-family: var(--mono); font-size: 10px; font-weight: 600;
+  color: var(--cl-text); letter-spacing: .1em; text-transform: uppercase;
+}
+.sec-hd-prefix { font-family: var(--mono); font-size: 10px; color: var(--cl-terra); }
+.sec-hd::after { content: ''; flex: 1; height: 1px; background: var(--cl-border); }
+
+/* ── TIMELINE ── */
+.tl { display: flex; flex-direction: column; }
+.tl-item { display: flex; gap: 18px; }
+.tl-spine { display: flex; flex-direction: column; align-items: center; padding-top: 5px; flex-shrink: 0; width: 18px; }
+.tl-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--cl-terra); border: 2px solid var(--cl-terra-bg); flex-shrink: 0; }
+.tl-dot.past { background: var(--cl-border2); border-color: var(--cl-surface2); }
+.tl-ln { width: 2px; flex: 1; background: var(--cl-border); margin: 5px 0 0; }
+.tl-body { flex: 1; padding-bottom: 28px; }
+.tl-item:last-child .tl-body { padding-bottom: 0; }
+.tl-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.tl-role { font-size: 14px; font-weight: 600; color: var(--cl-text); }
+.tl-date { font-family: var(--mono); font-size: 9px; color: var(--cl-muted); background: var(--cl-surface2); border: 1px solid var(--cl-border); padding: 2px 8px; border-radius: 3px; white-space: nowrap; }
+.tl-co { font-family: var(--mono); font-size: 10px; color: var(--cl-terra); margin-top: 3px; }
+.tl-bullets { margin-top: 8px; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 5px; }
+.tl-bullets li { font-size: 12px; color: var(--cl-sub); line-height: 1.65; padding-left: 14px; position: relative; }
+.tl-bullets li::before { content: '▸'; position: absolute; left: 0; color: var(--cl-terra); font-size: 9px; top: 3px; }
+.tl-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 10px; }
+.tl-tag { font-family: var(--mono); font-size: 9px; background: var(--cl-surface); color: var(--cl-muted); border: 1px solid var(--cl-border); padding: 2px 8px; border-radius: 3px; }
+
+/* ── SKILLS ── */
+.skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.skill-card { background: var(--cl-surface); border: 1px solid var(--cl-border); border-radius: 8px; padding: 16px 18px; }
+.skill-cat { font-family: var(--mono); font-size: 9px; color: var(--cl-terra); text-transform: uppercase; letter-spacing: .09em; margin-bottom: 10px; display: flex; align-items: center; gap: 7px; }
+.skill-cat i { font-size: 13px; }
+.pill-wrap { display: flex; flex-wrap: wrap; gap: 5px; }
+.pill { font-family: var(--mono); font-size: 9px; background: var(--cl-terra-bg); color: var(--cl-sub); border: 1px solid #E8C4B0; padding: 3px 9px; border-radius: 12px; }
+.pill.g { background: var(--cl-gold-bg); color: #7A5C00; border-color: #DEC88A; }
+
+/* ── PROJECTS ── */
+.proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.proj-card {
+  background: var(--cl-surface);
+  border: 1px solid var(--cl-border);
+  border-top: 3px solid var(--cl-terra);
+  border-radius: 0 0 8px 8px;
+  padding: 16px 18px;
+  transition: border-color .15s, box-shadow .15s;
+}
+.proj-card:hover { border-top-color: var(--cl-warm); box-shadow: 0 4px 16px rgba(26,17,8,.06); }
+.proj-fname { font-family: var(--mono); font-size: 11px; font-weight: 600; color: var(--cl-text); display: flex; align-items: center; gap: 7px; }
+.proj-fname i { font-size: 15px; color: var(--cl-terra); }
+.proj-desc { font-size: 12px; color: var(--cl-sub); margin-top: 8px; line-height: 1.65; }
+.proj-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 10px; }
+.proj-tag { font-family: var(--mono); font-size: 9px; background: var(--cl-terra-bg); color: var(--cl-terra); border: 1px solid #E8C4B0; padding: 2px 7px; border-radius: 3px; }
+
+/* ── CERTIFICATIONS ── */
+.cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.cert-card { background: var(--cl-surface); border: 1px solid var(--cl-border); border-radius: 8px; padding: 14px 16px; display: flex; align-items: center; gap: 14px; transition: border-color .15s; }
+.cert-card:hover { border-color: var(--cl-terra); }
+.cert-ico { width: 36px; height: 36px; border-radius: 8px; background: var(--cl-terra-bg); border: 1px solid #E8C4B0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.cert-ico i { font-size: 18px; color: var(--cl-terra); }
+.cert-name { font-size: 12px; font-weight: 500; color: var(--cl-text); }
+.cert-org { font-family: var(--mono); font-size: 9px; color: var(--cl-muted); margin-top: 3px; }
+.cert-badge { font-family: var(--mono); font-size: 8px; background: var(--cl-gold-bg); color: var(--cl-gold); border: 1px solid #DEC88A; padding: 1px 6px; border-radius: 3px; margin-top: 4px; display: inline-block; }
+
+/* ── EDUCATION ── */
+.edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.edu-card { background: var(--cl-surface); border: 1px solid var(--cl-border); border-radius: 8px; padding: 16px 18px; }
+.edu-degree { font-size: 13px; font-weight: 600; color: var(--cl-text); }
+.edu-school { font-family: var(--mono); font-size: 10px; color: var(--cl-terra); margin-top: 4px; }
+.edu-date { font-family: var(--mono); font-size: 9px; color: var(--cl-muted); margin-top: 3px; }
+
+/* ── CONTACT ── */
+.contact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; max-width: 600px; }
+.contact-card { background: var(--cl-surface); border: 1px solid var(--cl-border); border-radius: 8px; padding: 16px 18px; display: flex; align-items: center; gap: 14px; text-decoration: none; transition: border-color .15s, box-shadow .15s; }
+.contact-card:hover { border-color: var(--cl-terra); box-shadow: 0 2px 12px rgba(204,120,92,.1); }
+.contact-card i { font-size: 22px; color: var(--cl-terra); }
+.contact-lbl { font-family: var(--mono); font-size: 9px; color: var(--cl-muted); text-transform: uppercase; letter-spacing: .07em; }
+.contact-val { font-size: 12px; font-weight: 500; color: var(--cl-text); margin-top: 2px; }
+.contact-note { font-family: var(--mono); font-size: 10px; color: var(--cl-muted); margin-top: 20px; padding: 14px 18px; background: var(--cl-surface2); border: 1px solid var(--cl-border); border-radius: 8px; max-width: 600px; }
+.contact-note span { color: var(--cl-terra); }
+
+/* ── FOOTER ── */
+.footer { background: var(--cl-dark); padding: 12px 48px; display: flex; align-items: center; justify-content: space-between; }
+.footer-l { font-family: var(--mono); font-size: 9px; color: #4A3520; }
+.footer-r { font-family: var(--mono); font-size: 9px; color: var(--cl-terra); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 680px) {
+  .hero { padding: 24px 20px; flex-direction: column; gap: 20px; }
+  .tab-bar { padding: 0 20px; }
+  .tab-panel { padding: 24px 20px 40px; }
+  .kpi-inner { padding: 12px 20px; }
+  .kpi-n { font-size: 15px; }
+  .skills-grid, .proj-grid, .cert-grid, .edu-grid, .contact-grid { grid-template-columns: 1fr; }
+  .kpi-inner { grid-template-columns: repeat(3, 1fr); }
+  .kpi:nth-child(4), .kpi:nth-child(5) { display: none; }
+  .footer { padding: 12px 20px; flex-direction: column; gap: 4px; text-align: center; }
+  .tb-nav { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .cursor { animation: none; opacity: 1; } }
+</style>
 </head>
-<body class="bg-slate-100">
-    
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center px-5 lg:px-40 pt-20 overflow-hidden">
-        <!-- Background Blobs -->
-        <div class="absolute top-20 left-32 w-64 h-64 bg-purple-300/30 blob pulse-slow"></div>
-        <div class="absolute bottom-32 right-36 w-72 h-72 bg-orange-300/20 blob pulse-slow" style="animation-delay: 1s;"></div>
-        
-        <div class="relative z-10 w-full max-w-[70rem] mx-auto">
-            <div class="grid lg:grid-cols-12 gap-10 lg:gap-20 items-center">
-                <!-- Left Content -->
-                <div class="lg:col-span-7 fade-in-up">
-                    <div class="flex items-center gap-2 mb-5">
-                        <div class="h-1 w-12 bg-gradient-to-r from-[#B265FF] via-[#FF4400] to-[#FFA100]"></div>
-                        <span class="text-sm text-gray-600">Data Analytics Specialist 7+ Years</span>
-                    </div>
-                    
-                    <h1 class="text-4xl lg:text-6xl font-bold mb-5 leading-tight">
-                        Hi, I'm <span class="gradient-text">Durga S Tummalapalli </span>
-                    </h1>
-                    
-                    <p class="text-lg lg:text-xl text-gray-600 mb-10 max-w-2xl">
-                        Results-driven Data Analytics Engineer with <strong>7 years</strong> of experience in Business Intelligence, Data Engineering, and Cloud Data migration with ETL. I transform complex data into actionable insights for Business impact.
-                    </p>
-                    
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#contact" class="px-8 py-4 bg-gradient-to-r from-[#B265FF] via-[#FF4400] to-[#FFA100] text-white rounded-full font-bold hover:shadow-lg transition">
-                            Get In Touch
-                        </a>
-                        <a href="#projects" class="px-8 py-4 border-2 border-gray-300 rounded-full font-bold hover:bg-white transition">
-                            View Projects
-                        </a>
-                    </div>
-                    
-                    <!-- Quick Stats -->
-                    <div class="grid grid-cols-3 gap-5 mt-10 pt-10 border-t-2 border-gray-200">
-                        <div>
-                            <div class="text-3xl font-bold gradient-text">7+</div>
-                            <div class="text-sm text-gray-600">Years Experience</div>
-                        </div>
-                        <div>
-                            <div class="text-3xl font-bold gradient-text">50+</div>
-                            <div class="text-sm text-gray-600">BI Dashboards</div>
-                        </div>
-                        <div>
-                            <div class="text-3xl font-bold gradient-text">80%</div>
-                            <div class="text-sm text-gray-600">Efficiency Gain</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Right Image/Card -->
-                <div class="lg:col-span-5 relative">
-                    <div class="relative w-full h-96 lg:h-[32rem] rounded-2xl overflow-hidden bg-gradient-to-br from-[#B265FF] to-[#FFA100] p-1">
-                        <div class="w-full h-full bg-white rounded-2xl flex items-center justify-center">
-                            <div class="text-center p-10">
-                                <div class="w-40 h-40 mx-auto mb-5 rounded-full bg-gradient-to-br from-[#B265FF] to-[#FFA100] flex items-center justify-center text-white text-5xl font-bold">
-                                    DS
-                                </div>
-                                <h3 class="text-2xl font-bold mb-2">Durga S Tummalapalli</h3>
-                                <p class="text-gray-600 mb-5"> United States </p>
-                                <div class="flex justify-center gap-3">
-                                    <a href="https://www.linkedin.com/in/durga-saranya" target="_blank" class="w-12 h-12 rounded-full border-2 border-gray-300 flex items-center justify-center hover:bg-slate-100 transition">
-                                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                                    </a>
-                                    <a href="https://github.com/tdurgasaranya" target="_blank" class="w-12 h-12 rounded-full border-2 border-gray-300 flex items-center justify-center hover:bg-slate-100 transition">
-                                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                                    </a>
-                                    <a href="mailto:durgasaranyatumma@gmail.com" class="w-12 h-12 rounded-full border-2 border-gray-300 flex items-center justify-center hover:bg-slate-100 transition">
-                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<body>
 
-<!-- Impact Metrics - Plain Blue Circles -->
-<section class="px-5 lg:px-40 py-20 bg-white">
-    <div class="max-w-[70rem] mx-auto">
-        <h2 class="text-3xl lg:text-4xl font-bold text-center mb-16">
-            Quantitative <span class="gradient-text">Impact</span>
-        </h2>
-        
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 lg:gap-10">
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="win-dots">
+    <div class="win-dot" style="background:#FF5F57"></div>
+    <div class="win-dot" style="background:#FEBC2E"></div>
+    <div class="win-dot" style="background:#28C840"></div>
+  </div>
+  <span class="tb-path">~/durga-tummalapalli/portfolio.html</span>
+  <nav class="tb-nav">
+    <a href="#" onclick="showTab('experience');return false;">experience</a>
+    <a href="#" onclick="showTab('skills');return false;">skills</a>
+    <a href="#" onclick="showTab('projects');return false;">projects</a>
+    <a href="#" onclick="showTab('certs');return false;">certs</a>
+    <a href="#" onclick="showTab('contact');return false;">contact</a>
+  </nav>
+</div>
 
-            <div class="flex flex-col items-center">
-                <div class="w-32 h-32 bg-blue-500 rounded-full flex items-center justify-center mb-4">
-                    <span class="text-2xl font-bold text-white">60%</span>
-                </div>
-                <p class="text-sm text-gray-600 text-center">Efficiency Gain</p>
-            </div>
-
-            <div class="flex flex-col items-center">
-                <div class="w-32 h-32 bg-blue-500 rounded-full flex items-center justify-center mb-4">
-                    <span class="text-2xl font-bold text-white">99.5%</span>
-                </div>
-                <p class="text-sm text-gray-600 text-center">Data Accuracy</p>
-            </div>
-
-            <div class="flex flex-col items-center">
-                <div class="w-32 h-32 bg-blue-500 rounded-full flex items-center justify-center mb-4">
-                    <span class="text-2xl font-bold text-white">70%</span>
-                </div>
-                <p class="text-sm text-gray-600 text-center">Reporting Boost</p>
-            </div>
-
-            <div class="flex flex-col items-center">
-                <div class="w-32 h-32 bg-blue-500 rounded-full flex items-center justify-center mb-4">
-                    <span class="text-2xl font-bold text-white">80%</span>
-                </div>
-                <p class="text-sm text-gray-600 text-center">Data Reliability</p>
-            </div>
-
-            <div class="flex flex-col items-center">
-                <div class="w-32 h-32 bg-blue-500 rounded-full flex items-center justify-center mb-4">
-                    <span class="text-2xl font-bold text-white">90%</span>
-                </div>
-                <p class="text-sm text-gray-600 text-center">Sprint Delivery</p>
-            </div>
-
-            <div class="flex flex-col items-center">
-                <div class="w-32 h-32 bg-blue-500 rounded-full flex items-center justify-center mb-4">
-                    <span class="text-2xl font-bold text-white">50%</span>
-                </div>
-                <p class="text-sm text-gray-600 text-center">Time Reduction</p>
-            </div>
-
-        </div>
+<!-- HERO -->
+<div style="background:var(--cl-surface); border-bottom: 1px solid var(--cl-border);">
+<div class="hero">
+  <div class="photo-wrap">
+    <div class="photo-ring">
+      <div class="photo-inner">
+        <img src="data:image/jpeg;base64,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" alt="Durga Tummalapalli">
+      </div>
     </div>
-</section>
+    <div class="avail-badge">open</div>
+  </div>
+  <div class="hero-body">
+    <div class="hero-prompt">$ whoami</div>
+    <div class="hero-name">Durga Tummalapalli<span class="cursor"></span></div>
+    <div class="hero-title">// Migration Lead · Data Architect · AI Solutions Engineer</div>
+    <div class="hero-loc"><i class="ti ti-map-pin" style="font-size:11px;vertical-align:middle;"></i> Greater Chicago, IL &nbsp;·&nbsp; Remote-first</div>
+    <div class="chip-row">
+      <span class="chip">GCP · BigQuery</span>
+      <span class="chip">Cloud Engineering</span>
+      <span class="chip">ETL Data Pipelines</span>
+      <span class="chip">Data Analytics and Reporting</span>
+      <span class="chip g">Agentic AI</span>
+      <span class="chip g">LLM API Integration</span>
+      <span class="chip g">AI Workflows and Solutions</span>
+      <span class="chip">Data Architecture</span>
+      <span class="chip">Product strategy</span>
+    </div>
+    <div class="hero-links">
+      <a class="hlink" href="mailto:durgasaranyatumma@gmail.com"><i class="ti ti-mail"></i>Email</a>
+      <a class="hlink" href="https://www.linkedin.com/in/durga-saranya" target="_blank" rel="noopener"><i class="ti ti-brand-linkedin"></i>LinkedIn</a>
+      <a class="hlink" href="https://github.com/tdurgasaranya" target="_blank" rel="noopener"><i class="ti ti-brand-github"></i>GitHub</a>
+      <a class="hlink" href="https://tdurgasaranya.github.io/Durga-Saranya/" target="_blank" rel="noopener"><i class="ti ti-world"></i>Portfolio</a>
+      <a class="hlink" href="DurgaST_Resume_2026.pdf" target="_blank"><i class="ti ti-file-cv"></i>Resume</a>
+    </div>
+  </div>
+</div>
+</div>
 
-    <!-- Key Achievements Section -->
-    <section class="px-5 lg:px-40 py-20 bg-white">
-        <div class="max-w-[70rem] mx-auto">
-            <h2 class="text-3xl lg:text-4xl font-bold text-center mb-16">
-                Key <span class="gradient-text">Achievements</span>
-            </h2>
-            
-            <div class="grid lg:grid-cols-2 gap-6">
-                <div class="p-6 rounded-2xl bg-gradient-to-br from-purple-50 to-white border-2 border-purple-200 card-hover">
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#B265FF] to-[#FF4400] flex items-center justify-center flex-shrink-0">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-lg mb-2">Enterprise BI Migration Excellence</h3>
-                            <p class="text-gray-700">Led Qlik Sense to Microsoft Fabric migration delivering 60% performance improvement while maintaining zero downtime</p>
-                        </div>
-                    </div>
-                </div>
+<!-- KPI BAR -->
+<div class="kpi-bar">
+  <div class="kpi-inner">
+    <div class="kpi"><div class="kpi-n">8+</div><div class="kpi-l">YRS_EXP</div></div>
+    <div class="kpi"><div class="kpi-n">4+</div><div class="kpi-l">CRM_SYSTEMS</div></div>
+    <div class="kpi"><div class="kpi-n">99.5%</div><div class="kpi-l">DATA_ACCURACY</div></div>
+    <div class="kpi"><div class="kpi-n">30+</div><div class="kpi-l">ETL_PIPELINES</div></div>
+    <div class="kpi"><div class="kpi-n">5</div><div class="kpi-l">CLOUD_PLATFORMS</div></div>
+  </div>
+</div>
 
-                <div class="p-6 rounded-2xl bg-gradient-to-br from-orange-50 to-white border-2 border-orange-200 card-hover">
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#FFA100] to-[#ff4600] flex items-center justify-center flex-shrink-0">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-lg mb-2">High-Accuracy Data Pipelines</h3>
-                            <p class="text-gray-700">Achieved 99.5% accuracy across 30+ automated pipelines processing multi-source datasets for finance and operations</p>
-                        </div>
-                    </div>
-                </div>
+<!-- TAB SHELL -->
+<div class="shell">
 
-                <div class="p-6 rounded-2xl bg-gradient-to-br from-pink-50 to-white border-2 border-pink-200 card-hover">
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#d75585] to-[#B265FF] flex items-center justify-center flex-shrink-0">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-lg mb-2">Executive Decision Support</h3>
-                            <p class="text-gray-700">Developed 30+ Power BI dashboards enabling KPI-driven executive decisions for quarterly earnings reporting</p>
-                        </div>
-                    </div>
-                </div>
+  <!-- TAB BAR -->
+  <div class="tab-bar" id="tabBar">
+    <button class="tab-btn active" data-tab="experience" onclick="showTab('experience')">
+      <i class="ti ti-briefcase"></i>experience
+    </button>
+    <button class="tab-btn" data-tab="skills" onclick="showTab('skills')">
+      <i class="ti ti-code"></i>skills
+    </button>
+    <button class="tab-btn" data-tab="projects" onclick="showTab('projects')">
+      <i class="ti ti-rocket"></i>projects
+    </button>
+    <button class="tab-btn" data-tab="certs" onclick="showTab('certs')">
+      <i class="ti ti-certificate"></i>certs &amp; edu
+    </button>
+    <button class="tab-btn" data-tab="contact" onclick="showTab('contact')">
+      <i class="ti ti-at"></i>contact
+    </button>
+  </div>
 
-                <div class="p-6 rounded-2xl bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200 card-hover">
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-[#FFA100] flex items-center justify-center flex-shrink-0">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-lg mb-2">Process Automation Impact</h3>
-                            <p class="text-gray-700">Automated 50+ SQL workflows reducing manual reporting by 40% and accelerating decision-making cycles</p>
-                        </div>
-                    </div>
-                </div>
+  <!-- EXPERIENCE -->
+  <div class="tab-panel active" id="tab-experience">
+    <div class="sec-hd"><span class="sec-hd-prefix">$</span><span class="sec-hd-label">professional experience</span></div>
+    <div class="tl">
 
-                <div class="p-6 rounded-2xl bg-gradient-to-br from-green-50 to-white border-2 border-green-200 card-hover">
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-blue-500 flex items-center justify-center flex-shrink-0">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-lg mb-2">Agile Team Leadership</h3>
-                            <p class="text-gray-700">Delivered 90% on-time sprint completion through effective Agile leadership and cross-functional collaboration</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="p-6 rounded-2xl bg-gradient-to-br from-yellow-50 to-white border-2 border-yellow-200 card-hover">
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-yellow-500 to-orange-500 flex items-center justify-center flex-shrink-0">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-lg mb-2">Cloud Architecture Optimization</h3>
-                            <p class="text-gray-700">Architected end-to-end ETL pipelines migrating on-premises data to AWS, improving reliability by 80%</p>
-                        </div>
-                    </div>
-                </div>
+      <div class="tl-item">
+        <div class="tl-spine"><div class="tl-dot"></div><div class="tl-ln"></div></div>
+        <div class="tl-body">
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">Migration Lead · Data Architecture &amp; AI Solutions</div>
+              <div class="tl-co">EvenUp Law &nbsp;·&nbsp; California (Remote)</div>
             </div>
+            <div class="tl-date">Apr 2026 — Present</div>
+          </div>
+          <ul class="tl-bullets">
+            <li>Leading end-to-end data migration from 4+ legacy legal CRM systems into EvenUp's AI-powered legal SaaS platform with zero downtime</li>
+            <li>Built AI Playbook and AI Workflows for Customer Success and Professional Services teams, automating documentation, risk identification, and data mapping</li>
+            <li>Developed agentic AI workers to handle repetitive tasks across Data Migration, Project Management, and Implementation lifecycle</li>
+            <li>Designed standardized, repeatable migration scripts and validation workflows ensuring 99%+ data accuracy and audit compliance</li>
+            <li>Leveraged GCP BigQuery to support migration workflows and downstream AI integrations</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tl-tag">GCP · BigQuery ·Postgres</span><span class="tl-tag">AI Agents and workflow automations</span><span class="tl-tag">CMS Product Strategy</span><span class="tl-tag">Data Analytics</span><span class="tl-tag">Database Architecture</span><span class="tl-tag">LLM API Integrations</span>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- Skills Section -->
-    <section class="px-5 lg:px-40 py-20 bg-slate-100">
-        <div class="max-w-[70rem] mx-auto">
-            <h2 class="text-3xl lg:text-4xl font-bold text-center mb-10">
-                Core <span class="gradient-text">Skills</span>
-            </h2>
-            
-            <div class="grid lg:grid-cols-4 gap-5">
-                <div class="p-6 bg-white rounded-2xl border-2 border-gray-200">
-                    <h3 class="font-bold mb-4 text-lg">Programming</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-badge px-3 py-1 bg-slate-100 rounded-full text-sm">SQL</span>
-                        <span class="skill-badge px-3 py-1 bg-slate-100 rounded-full text-sm">Python</span>
-                        <span class="skill-badge px-3 py-1 bg-slate-100 rounded-full text-sm">PySpark</span>
-                        <span class="skill-badge px-3 py-1 bg-slate-100 rounded-full text-sm">DAX</span>
-                        <span class="skill-badge px-3 py-1 bg-slate-100 rounded-full text-sm">Pandas</span>
-                    </div>
-                </div>
-                
-                <div class="p-6 bg-white rounded-2xl border-2 border-gray-200">
-                    <h3 class="font-bold mb-4 text-lg">Cloud Platforms</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-badge px-3 py-1 bg-slate-100 rounded-full text-sm">AWS S3</span>
-                        <span class="skill-badge px-3 py-1 bg-slate-100 rounded-full text-sm">Azure Data Factory</span>
-                        <span class="skill-badge px-3 py-1 bg-slate-100 rounded-full text-sm">Databricks</span>
-                        <span class="skill-badge px-3 py-1 bg-slate-100 rounded-full text-sm">Microsoft Fabric</span>
-                        <span class="skill-badge px-3 py-1 bg-slate-100 rounded-full text-sm">Snowflake</span>
-                    </div>
-                </div>
-                
-                <div class="p-6 bg-white rounded-2xl border-2 border-gray-200">
-                    <h3 class="font-bold mb-4 text-lg">BI & Visualization</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-badge px-3 py-1 bg-slate-100 rounded-full text-sm">Power BI</span>
-                        <span class="skill-badge px-3 py-1 bg-slate-100 rounded-full text-sm">Tableau</span>
-                        <span class="skill-badge px-3 py-1 bg-slate-100 rounded-full text-sm">Qlik Sense</span>
-                    </div>
-                </div>
-                
-                <div class="p-6 bg-white rounded-2xl border-2 border-gray-200">
-                    <h3 class="font-bold mb-4 text-lg">Databases</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-badge px-3 py-1 bg-slate-100 rounded-full text-sm">IBM db2</span>
-                        <span class="skill-badge px-3 py-1 bg-slate-100 rounded-full text-sm">MS SQL Server</span>
-                        <span class="skill-badge px-3 py-1 bg-slate-100 rounded-full text-sm">MySQL</span>
-                        <span class="skill-badge px-3 py-1 bg-slate-100 rounded-full text-sm">Oracle</span>
-                    </div>
-                </div>
+      <div class="tl-item">
+        <div class="tl-spine"><div class="tl-dot past"></div><div class="tl-ln"></div></div>
+        <div class="tl-body">
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">Database Engineer</div>
+              <div class="tl-co">Blue Bird Corporation &nbsp;·&nbsp; Georgia</div>
             </div>
+            <div class="tl-date">Jan 2024 — Mar 2026</div>
+          </div>
+          <ul class="tl-bullets">
+            <li>Built and maintained 30+ automated ETL data pipelines processing multi-source datasets with 99.5% data accuracy</li>
+            <li>Developed 30+ Power BI dashboards using AWS Athena datasets delivering executive KPIs for quarterly earnings reporting</li>
+            <li>Led migration from Qlik Sense to Microsoft Fabric Power BI with Git-based version control, improving efficiency by 60%</li>
+            <li>Optimized SQL queries using CTEs and joins, reducing dashboard refresh time by 50%</li>
+            <li>Architected ETL pipelines migrating on-premises Infor LN data to AWS S3 and Athena, improving data quality and cost control</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tl-tag">Power BI · DAX</span><span class="tl-tag">AWS S3 · Athena</span><span class="tl-tag">MS Fabric</span><span class="tl-tag">SQL · CTEs</span><span class="tl-tag">ETL</span>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- Projects Section -->
-    <section id="projects" class="px-5 lg:px-40 py-20 bg-white">
-        <div class="max-w-[70rem] mx-auto">
-            <h2 class="text-3xl lg:text-4xl font-bold text-center mb-10">
-                View All <span class="gradient-text">Projects</span>
-            </h2>
-            
-            <div class="grid lg:grid-cols-2 gap-8">
-                <a href="https://atsresume-scanner.base44.app/" target="_blank" class="group p-8 rounded-2xl border-2 border-gray-200 card-hover bg-white">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-[#B265FF] to-[#FF4400] flex items-center justify-center text-white text-xl font-bold">
-                            ATS
-                        </div>
-                        <svg class="w-6 h-6 text-gray-400 group-hover:text-[#B265FF] transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">ATS Resume Scanner</h3>
-                    <p class="text-gray-600 mb-4">AI-powered resume analysis system that optimizes CVs for Applicant Tracking Systems using NLP and pattern recognition.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium">NLP</span>
-                        <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">Python</span>
-                        <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">ML</span>
-                    </div>
-                </a>
-                
-                <a href="https://h1-b-insight-hub-b0f69f4a.base44.app/" target="_blank" class="group p-8 rounded-2xl border-2 border-gray-200 card-hover bg-white">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-[#FFA100] to-[#ff4600] flex items-center justify-center text-white text-xl font-bold">
-                            H1B
-                        </div>
-                        <svg class="w-6 h-6 text-gray-400 group-hover:text-[#FFA100] transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">H1-B Insight Hub</h3>
-                    <p class="text-gray-600 mb-4">Data visualization dashboard providing comprehensive insights into H1-B visa trends, statistics, and patterns.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-medium">Data Viz</span>
-                        <span class="px-3 py-1 bg-pink-100 text-pink-700 rounded-full text-xs font-medium">Analytics</span>
-                        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-medium">D3.js</span>
-                    </div>
-                </a>
-                
-                <a href="https://claude.ai/public/artifacts/14884c43-337b-43db-8bb7-b9d6bc4db1e7" target="_blank" class="group p-8 rounded-2xl border-2 border-gray-200 card-hover bg-white">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-[#d75585] to-[#B265FF] flex items-center justify-center text-white text-xl font-bold">
-                            SB
-                        </div>
-                        <svg class="w-6 h-6 text-gray-400 group-hover:text-[#d75585] transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">Starbucks Sales Prediction</h3>
-                    <p class="text-gray-600 mb-4">Machine learning model forecasting Starbucks sales using historical data, promotions, and customer demographics.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium">ML</span>
-                        <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">Regression</span>
-                        <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">Time Series</span>
-                    </div>
-                </a>
-                
-                <a href="https://github.com/tdurgasaranya/Power-BI-Projects" target="_blank" class="group p-8 rounded-2xl border-2 border-gray-200 card-hover bg-white">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-[#FFA100] flex items-center justify-center text-white text-xl font-bold">
-                            BI
-                        </div>
-                        <svg class="w-6 h-6 text-gray-400 group-hover:text-blue-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">Power BI Portfolio</h3>
-                    <p class="text-gray-600 mb-4">Showcase of interactive dashboards, KPIs, DAX measures, and custom metrics driving business decision-making.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">Power BI</span>
-                        <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-medium">DAX</span>
-                        <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium">Analytics</span>
-                    </div>
-                </a>
-            
-            <a href="https://devpost.com/software/genber-bias-in-tech-layoffs-economic-development-for-women" target="_blank" class="group p-8 rounded-2xl border-2 border-gray-200 card-hover bg-white">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-[#d75585] to-[#B265FF] flex items-center justify-center text-white text-xl font-bold">
-                            GW
-                        </div>
-                        <svg class="w-6 h-6 text-gray-400 group-hover:text-[#d75585] transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">Google AI Data Challenge</h3>
-                    <p class="text-gray-600 mb-4">Google's Women Techmakers presents She Builds AI </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium">Python_web_Scraping</span>
-                        <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">SQL</span>
-                        <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">Gemini_Model</span>
-                    </div>
-                </a>
-               
-            
-                <a href="https://github.com/tdurgasaranya/MTA-Data-Challenge/blob/main/README.md" target="_blank" class="group p-8 rounded-2xl border-2 border-gray-200 card-hover bg-white">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-[#d75585] to-[#B265FF] flex items-center justify-center text-white text-xl font-bold">
-                            MTA
-                        </div>
-                        <svg class="w-6 h-6 text-gray-400 group-hover:text-[#d75585] transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">MTA Data Challenge</h3>
-                    <p class="text-gray-600 mb-4">MTA Data Challenge project analyzes public transit data from the Metropolitan Transportation Authority (MTA) to uncover insights into subway ridership patterns.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium">Python_Pandas</span>
-                        <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">SqLite</span>
-                        <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">Power_BI</span>
-                    </div>
-                </a>
-
-
-            <div class="text-center mt-10">
-                <a href="https://tdurgasaranya.github.io/AI_Applications/" target="_blank" class="inline-block px-8 py-4 border-2 border-gray-300 rounded-full font-bold hover:bg-white transition">
-                    View All Projects
-                </a>
+      <div class="tl-item">
+        <div class="tl-spine"><div class="tl-dot past"></div><div class="tl-ln"></div></div>
+        <div class="tl-body">
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">BI Data Analyst (Contract)</div>
+              <div class="tl-co">Vervint &nbsp;·&nbsp; Michigan</div>
             </div>
+            <div class="tl-date">May 2023 — Oct 2023</div>
+          </div>
+          <ul class="tl-bullets">
+            <li>Built 15+ Power BI dashboards via advanced DAX and Power Query, enabling KPI monitoring and reducing ad hoc reporting cycles</li>
+            <li>Streamlined ERP Infor to MS SQL Server workflows, reducing integration effort by 40%</li>
+            <li>Increased data reliability by 70% through validated SQL queries, resolving integrity issues causing business analysis delays</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tl-tag">Power BI</span><span class="tl-tag">DAX · Power Query</span><span class="tl-tag">MS SQL Server</span><span class="tl-tag">ERP Infor</span>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- Experience Section -->
-    <section class="px-5 lg:px-40 py-20 bg-slate-100">
-        <div class="max-w-[70rem] mx-auto">
-            <h2 class="text-3xl lg:text-4xl font-bold text-center mb-16">
-                Professional <span class="gradient-text">Experience</span>
-            </h2>
-            
-            <div class="space-y-6">
-                <!-- Blue Bird Corporation -->
-                <div class="p-8 bg-white rounded-2xl border-2 border-gray-200 card-hover">
-                    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
-                        <div>
-                            <h3 class="text-2xl font-bold mb-1">Lead Data Analytics Engineer</h3>
-                            <p class="text-lg text-[#B265FF] font-semibold">Blue Bird Corporation</p>
-                        </div>
-                        <span class="text-gray-600 mt-2 lg:mt-0">Jan 2024 - Present</span>
-                    </div>
-                    <div class="grid md:grid-cols-2 gap-4 mb-4">
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center flex-shrink-0">
-                                <span class="text-xl font-bold text-[#B265FF]">30+</span>
-                            </div>
-                            <p class="text-sm text-gray-600">Automated ETL pipelines with 99.5% accuracy</p>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-lg bg-orange-100 flex items-center justify-center flex-shrink-0">
-                                <span class="text-xl font-bold text-[#FFA100]">60%</span>
-                            </div>
-                            <p class="text-sm text-gray-600">Efficiency gain from Qlik to Fabric migration</p>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-lg bg-pink-100 flex items-center justify-center flex-shrink-0">
-                                <span class="text-xl font-bold text-[#d75585]">70%</span>
-                            </div>
-                            <p class="text-sm text-gray-600">Reporting efficiency boost via DAX & SQL</p>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
-                                <span class="text-xl font-bold text-blue-500">80%</span>
-                            </div>
-                            <p class="text-sm text-gray-600">Improved metrics with star schema design</p>
-                        </div>
-                    </div>
-                    <ul class="space-y-2 text-gray-700">
-                        <li class="flex items-start gap-2">
-                            <svg class="w-5 h-5 text-[#B265FF] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            <span>Built 30+ Power BI dashboards for executive KPIs and quarterly earnings</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <svg class="w-5 h-5 text-[#B265FF] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            <span>Architected end-to-end ETL pipelines migrating on-prem data to AWS S3/Athena</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <svg class="w-5 h-5 text-[#B265FF] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            <span>Reduced report refresh time by 50% through SQL query optimization</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Micron Technology -->
-                <div class="p-8 bg-white rounded-2xl border-2 border-gray-200 card-hover">
-                    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
-                        <div>
-                            <h3 class="text-2xl font-bold mb-1">Senior Data Engineer</h3>
-                            <p class="text-lg text-[#FFA100] font-semibold">Micron Technology</p>
-                        </div>
-                        <span class="text-gray-600 mt-2 lg:mt-0">Dec 2019 - Aug 2022</span>
-                    </div>
-                    <div class="grid md:grid-cols-2 gap-4 mb-4">
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center flex-shrink-0">
-                                <span class="text-xl font-bold text-[#B265FF]">20+</span>
-                            </div>
-                            <p class="text-sm text-gray-600">Tableau dashboards for supply chain KPIs</p>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-lg bg-orange-100 flex items-center justify-center flex-shrink-0">
-                                <span class="text-xl font-bold text-[#FFA100]">90%</span>
-                            </div>
-                            <p class="text-sm text-gray-600">Improved master data governance</p>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0">
-                                <span class="text-xl font-bold text-green-600">50+</span>
-                            </div>
-                            <p class="text-sm text-gray-600">Automated SQL reporting workflows</p>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
-                                <span class="text-xl font-bold text-blue-500">40%</span>
-                            </div>
-                            <p class="text-sm text-gray-600">Faster Snowflake data processing</p>
-                        </div>
-                    </div>
-                    <ul class="space-y-2 text-gray-700">
-                        <li class="flex items-start gap-2">
-                            <svg class="w-5 h-5 text-[#FFA100] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            <span>Built scalable ETL pipelines on Snowflake improving data accuracy by 99%</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <svg class="w-5 h-5 text-[#FFA100] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            <span>Mentored junior engineers boosting team productivity by 65%</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <svg class="w-5 h-5 text-[#FFA100] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            <span>Optimized ETL workflows reducing daily runtime by 50%</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Vervint -->
-                <div class="p-8 bg-white rounded-2xl border-2 border-gray-200 card-hover">
-                    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
-                        <div>
-                            <h3 class="text-2xl font-bold mb-1">Business Intelligence Developer</h3>
-                            <p class="text-lg text-[#d75585] font-semibold">Vervint</p>
-                        </div>
-                        <span class="text-gray-600 mt-2 lg:mt-0">May 2023 - Oct 2023</span>
-                    </div>
-                    <div class="grid md:grid-cols-2 gap-4 mb-4">
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center flex-shrink-0">
-                                <span class="text-xl font-bold text-[#B265FF]">15+</span>
-                            </div>
-                            <p class="text-sm text-gray-600">Power BI dashboards delivered</p>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-lg bg-pink-100 flex items-center justify-center flex-shrink-0">
-                                <span class="text-xl font-bold text-[#d75585]">70%</span>
-                            </div>
-                            <p class="text-sm text-gray-600">Increased data reliability</p>
-                        </div>
-                    </div>
-                    <ul class="space-y-2 text-gray-700">
-                        <li class="flex items-start gap-2">
-                            <svg class="w-5 h-5 text-[#d75585] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            <span>Built 15+ dashboards with advanced DAX reducing ad hoc reporting cycles</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <svg class="w-5 h-5 text-[#d75585] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            <span>Streamlined ERP workflows reducing integration effort by 40%</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Exusia -->
-                <div class="p-8 bg-white rounded-2xl border-2 border-gray-200 card-hover">
-                    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
-                        <div>
-                            <h3 class="text-2xl font-bold mb-1">Data Analyst</h3>
-                            <p class="text-lg text-blue-500 font-semibold">Exusia, Inc</p>
-                        </div>
-                        <span class="text-gray-600 mt-2 lg:mt-0">Jul 2018 - Dec 2019</span>
-                    </div>
-                    <div class="grid md:grid-cols-2 gap-4 mb-4">
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-lg bg-orange-100 flex items-center justify-center flex-shrink-0">
-                                <span class="text-xl font-bold text-[#FFA100]">18%</span>
-                            </div>
-                            <p class="text-sm text-gray-600">Cut in non-compliant operations</p>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
-                                <span class="text-xl font-bold text-blue-500">35%</span>
-                            </div>
-                            <p class="text-sm text-gray-600">Boost in cost efficiency</p>
-                        </div>
-                    </div>
-                    <ul class="space-y-2 text-gray-700">
-                        <li class="flex items-start gap-2">
-                            <svg class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            <span>Detected cost leakages through SQL analysis saving 18% in operations</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <svg class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            <span>Built executive Tableau dashboards driving 35% visibility boost</span>
-                        </li>
-                    </ul>
-                </div>
+      <div class="tl-item">
+        <div class="tl-spine"><div class="tl-dot past"></div><div class="tl-ln"></div></div>
+        <div class="tl-body">
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">Senior Data Engineer</div>
+              <div class="tl-co">Micron Technology &nbsp;·&nbsp; Remote</div>
             </div>
+            <div class="tl-date">Dec 2019 — Aug 2022</div>
+          </div>
+          <ul class="tl-bullets">
+            <li>Developed 20+ Tableau dashboards tracking supply chain KPIs, improving cross-team data accuracy by 70%</li>
+            <li>Automated 50+ recurring SQL reporting workflows, eliminating manual inconsistencies and accelerating decision-making</li>
+            <li>Designed automated data ingestion pipelines from 5+ ERP sources, improving master data governance and accuracy by 90%</li>
+            <li>Architected Snowflake cloud data warehouse integrating SAP ERP data, improving data availability by 50%</li>
+            <li>Optimized Python &amp; SQL ETL workflows reducing daily runtime by 50%, ensuring 99% pipeline accuracy</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tl-tag">Snowflake</span><span class="tl-tag">Tableau</span><span class="tl-tag">Python</span><span class="tl-tag">SAP ERP</span><span class="tl-tag">SQL</span>
+          </div>
         </div>
-    </section>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-spine"><div class="tl-dot past"></div></div>
+        <div class="tl-body" style="padding-bottom:0">
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">Data Analyst</div>
+              <div class="tl-co">Exusia Inc. &nbsp;·&nbsp; India</div>
+            </div>
+            <div class="tl-date">Jul 2018 — Dec 2019</div>
+          </div>
+          <ul class="tl-bullets">
+            <li>Analyzed and validated client data using SQL contributing to 98%+ data accuracy across reporting datasets</li>
+            <li>Developed and monitored Ab Initio ETL workflows supporting 15+ recurring client reports</li>
+            <li>Created interactive Tableau dashboards, reducing manual reporting effort by 25%</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tl-tag">Ab Initio</span><span class="tl-tag">Tableau</span><span class="tl-tag">SQL</span><span class="tl-tag">ETL</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="tab-panel" id="tab-skills">
+    <div class="sec-hd"><span class="sec-hd-prefix">$</span><span class="sec-hd-label">technical skills</span></div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-cat"><i class="ti ti-brain"></i>Gen AI &amp; Automation</div>
+        <div class="pill-wrap">
+          <span class="pill g">Prompt Engineering</span>
+          <span class="pill g">AI Workflow Automation</span>
+          <span class="pill g">Agentic AI Workflows</span>
+          <span class="pill g">LLM API (Claude, OpenAI)</span>
+          <span class="pill g">n8n · Airflow</span>
+          <span class="pill g">Feature Store Concepts</span>
+          <span class="pill g">AI Governance</span>
+          <span class="pill g">AI Data Pipelines</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat"><i class="ti ti-topology-star"></i>Data Architecture</div>
+        <div class="pill-wrap">
+          <span class="pill">Data Mesh</span>
+          <span class="pill">Medallion Architecture</span>
+          <span class="pill">Lakehouse Design</span>
+          <span class="pill">Dimensional Modeling</span>
+          <span class="pill">Star / Snowflake Schema</span>
+          <span class="pill">Streaming Architecture</span>
+          <span class="pill">Data Lineage</span>
+          <span class="pill">Metadata Management</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat"><i class="ti ti-database-import"></i>Data Migration</div>
+        <div class="pill-wrap">
+          <span class="pill">Legacy → Target Migration</span>
+          <span class="pill">Schema Mapping</span>
+          <span class="pill">Delta / Incremental Loads</span>
+          <span class="pill">Zero-Downtime Cutover</span>
+          <span class="pill">Data Profiling</span>
+          <span class="pill">Audit &amp; Reconciliation</span>
+          <span class="pill">99%+ Accuracy SLA</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat"><i class="ti ti-cloud"></i>Cloud Platforms</div>
+        <div class="pill-wrap">
+          <span class="pill">GCP · BigQuery · Dataflow</span>
+          <span class="pill">AWS S3 · Athena</span>
+          <span class="pill">Azure ADF · Fabric</span>
+          <span class="pill">Snowflake</span>
+          <span class="pill">Microsoft Fabric</span>
+          <span class="pill">Databricks</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat"><i class="ti ti-terminal-2"></i>ETL &amp; Engineering</div>
+        <div class="pill-wrap">
+          <span class="pill">Python · Pandas · NumPy</span>
+          <span class="pill">Advanced SQL</span>
+          <span class="pill">Query Optimization</span>
+          <span class="pill">SSIS · SSRS</span>
+          <span class="pill">dbt · Airflow</span>
+          <span class="pill">Ab Initio</span>
+          <span class="pill">CI/CD for Data</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat"><i class="ti ti-chart-bar"></i>BI &amp; Visualization</div>
+        <div class="pill-wrap">
+          <span class="pill">Power BI · DAX · Power Query</span>
+          <span class="pill">Tableau</span>
+          <span class="pill">Qlik Sense</span>
+          <span class="pill">Looker Studio</span>
+          <span class="pill">KPI Dashboard Design</span>
+          <span class="pill">Executive Reporting</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat"><i class="ti ti-database"></i>Databases</div>
+        <div class="pill-wrap">
+          <span class="pill">MS SQL Server</span>
+          <span class="pill">BigQuery</span>
+          <span class="pill">Snowflake</span>
+          <span class="pill">MySQL · PostgreSQL</span>
+          <span class="pill">IBM Db2</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat"><i class="ti ti-tool"></i>Tools &amp; DevOps</div>
+        <div class="pill-wrap">
+          <span class="pill">Git · Linux</span>
+          <span class="pill">Agile / Scrum</span>
+          <span class="pill">Jira · Airtable</span>
+          <span class="pill">ServiceNow</span>
+          <span class="pill">VS Code</span>
+          <span class="pill">Dev / Staging / Prod</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="tab-panel" id="tab-projects">
+    <div class="sec-hd"><span class="sec-hd-prefix">$</span><span class="sec-hd-label">featured projects</span></div>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <div class="proj-fname"><i class="ti ti-brain"></i>ai_playbook_agents.py</div>
+        <div class="proj-desc">Built AI Agents and AI Workflow Playbooks for EvenUp's Customer Success and Professional Services teams — automating documentation, risk identification in customer health, and intelligent data mapping across migration lifecycle.</div>
+        <div class="proj-tags"><span class="proj-tag">Claude API</span><span class="proj-tag">n8n</span><span class="proj-tag">Agentic AI</span><span class="proj-tag">LLM Integration</span><span class="proj-tag">Airflow</span></div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-fname"><i class="ti ti-database-import"></i>crm_migration_engine.sql</div>
+        <div class="proj-desc">End-to-end zero-downtime data migration from 4+ legacy legal CRMs (CASEpeer, SmartAdvocate, Filevine, Salesforce) into EvenUp's AI-powered SaaS platform — standardized scripts, audit trails, and validation workflows.</div>
+        <div class="proj-tags"><span class="proj-tag">BigQuery</span><span class="proj-tag">SQL</span><span class="proj-tag">GCP</span><span class="proj-tag">Schema Mapping</span><span class="proj-tag">Data Profiling</span></div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-fname"><i class="ti ti-cloud-upload"></i>infor_to_aws_pipeline.tf</div>
+        <div class="proj-desc">Architected ETL pipelines migrating on-premises Infor LN ERP data to AWS S3 and Athena at Blue Bird Corporation — 30+ automated pipelines with 99.5% accuracy and improved cost control.</div>
+        <div class="proj-tags"><span class="proj-tag">AWS S3</span><span class="proj-tag">Athena</span><span class="proj-tag">ETL</span><span class="proj-tag">Infor LN</span><span class="proj-tag">Python</span></div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-fname"><i class="ti ti-chart-dots"></i>fabric_bi_migration/</div>
+        <div class="proj-desc">Led full migration from Qlik Sense to Microsoft Fabric Power BI with Git-based version control at Blue Bird Corp — 30+ executive dashboards across Warranty, Finance, Operations, and Sales, 60% efficiency gain.</div>
+        <div class="proj-tags"><span class="proj-tag">MS Fabric</span><span class="proj-tag">Power BI</span><span class="proj-tag">DAX</span><span class="proj-tag">Git</span><span class="proj-tag">Qlik Sense</span></div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-fname"><i class="ti ti-snowflake"></i>snowflake_sap_dw.py</div>
+        <div class="proj-desc">Architected Snowflake cloud data warehouse at Micron Technology integrating SAP ERP data — ETL pipelines improved data availability by 50%, runtime reduced by 50% through Python &amp; SQL optimization.</div>
+        <div class="proj-tags"><span class="proj-tag">Snowflake</span><span class="proj-tag">SAP ERP</span><span class="proj-tag">Python</span><span class="proj-tag">SQL</span><span class="proj-tag">ETL</span></div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-fname"><i class="ti ti-robot"></i>ai_data_validation_agent/</div>
+        <div class="proj-desc">Agentic AI system for automated CRM data validation — uses LLM-powered rules to flag schema mismatches, detect anomalies, and generate human-readable audit reports during migration runs.</div>
+        <div class="proj-tags"><span class="proj-tag">Agentic AI</span><span class="proj-tag">Python</span><span class="proj-tag">LLM API</span><span class="proj-tag">Data Quality</span><span class="proj-tag">Automation</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CERTS & EDU -->
+  <div class="tab-panel" id="tab-certs">
+    <div class="sec-hd"><span class="sec-hd-prefix">$</span><span class="sec-hd-label">certifications</span></div>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-ico"><i class="ti ti-robot"></i></div>
+        <div>
+          <div class="cert-name">Claude Certified AI Solutions Architect</div>
+          <div class="cert-org">Anthropic</div>
+          <div class="cert-badge">AI · LLM</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-ico"><i class="ti ti-database"></i></div>
+        <div>
+          <div class="cert-name">Databricks GCP Data Architect</div>
+          <div class="cert-org">Databricks</div>
+          <div class="cert-badge">Cloud · Data</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-ico"><i class="ti ti-device-analytics"></i></div>
+        <div>
+          <div class="cert-name">Pendo.ai Product Management</div>
+          <div class="cert-org">Pendo</div>
+          <div class="cert-badge">Product</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-ico"><i class="ti ti-address-book"></i></div>
+        <div>
+          <div class="cert-name">Salesforce &amp; Filevine CRM</div>
+          <div class="cert-org">Salesforce · Filevine</div>
+          <div class="cert-badge">CRM · Migration</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-hd" style="margin-top:32px;"><span class="sec-hd-prefix">$</span><span class="sec-hd-label">education</span></div>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-degree">Master of Science, Data Science</div>
+        <div class="edu-school">Grand Valley State University</div>
+        <div class="edu-date">Aug 2022 — Dec 2023</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">Bachelor of Science, Computer Science</div>
+        <div class="edu-school">Jawaharlal Nehru Technological University</div>
+        <div class="edu-date">Sep 2014 — May 2018</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="tab-panel" id="tab-contact">
+    <div class="sec-hd"><span class="sec-hd-prefix">$</span><span class="sec-hd-label">get in touch</span></div>
+    <div class="contact-grid">
+      <a class="contact-card" href="mailto:durgasaranyatumma@gmail.com">
+        <i class="ti ti-mail"></i>
+        <div><div class="contact-lbl">email</div><div class="contact-val">durgasaranyatumma@gmail.com</div></div>
+      </a>
+      <a class="contact-card" href="https://www.linkedin.com/in/durga-saranya" target="_blank" rel="noopener">
+        <i class="ti ti-brand-linkedin"></i>
+        <div><div class="contact-lbl">linkedin</div><div class="contact-val">/in/durga-saranya</div></div>
+      </a>
+      <a class="contact-card" href="https://github.com/tdurgasaranya" target="_blank" rel="noopener">
+        <i class="ti ti-brand-github"></i>
+        <div><div class="contact-lbl">github</div><div class="contact-val">tdurgasaranya</div></div>
+      </a>
+      <a class="contact-card" href="https://tdurgasaranya.github.io/Durga-Saranya/" target="_blank" rel="noopener">
+        <i class="ti ti-world"></i>
+        <div><div class="contact-lbl">portfolio site</div><div class="contact-val">tdurgasaranya.github.io</div></div>
+      </a>
+    </div>
+    <div class="contact-note">
+      <span>$ status:</span> Open to Senior Data Engineer, Data Architect, and AI Solutions roles &nbsp;·&nbsp; Remote preferred &nbsp;·&nbsp; Greater Chicago area
+    </div>
+  </div>
+
+</div><!-- /shell -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <span class="footer-l">built with &lt;data /&gt; &amp; obsession &nbsp;·&nbsp; Durga Tummalapalli &nbsp;·&nbsp; 2026</span>
+  <span class="footer-r">// migration_lead · ai_solutions · data_architect</span>
+</div>
+
+<script>
+function showTab(name) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelector('[data-tab="'+name+'"]').classList.add('active');
+  document.getElementById('tab-'+name).classList.add('active');
+  // sync topbar links
+  document.querySelectorAll('.tb-nav a').forEach(a => {
+    a.style.color = a.getAttribute('onclick').includes(name) ? 'var(--cl-terra)' : '';
+  });
+}
+// keyboard tab support
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('keydown', e => {
+    if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
+  });
+});
+</script>
+</body>
+</html>
